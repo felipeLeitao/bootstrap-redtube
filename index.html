@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+  <title></title>
 
-	<!-- Latest compiled and minified CSS -->
+  <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
 <style type="text/css">
-	
+  
 p {
   white-space: nowrap;
   width: 100%;                   
-  overflow: hidden;              /* "overflow" value must be different from "visible" */ 
-
+  overflow: hidden;
   text-overflow:    ellipsis;
 }
 
@@ -24,18 +23,23 @@ p {
 <body style="background-color: black;">
 
 <div class="container">
-	<div class="row" id="conteudo">
+  
+  <div class="jumbotron">
+  <h1>.Net Coders</h1>
+  <p>Redtube (Zona Leste)</p>
+  
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="btn-search">Vai!</button>
+      </span>
+      <input id="itemSearch" type="text" class="form-control" placeholder="Mia Khalifa...">
+    </div><!-- /input-group -->
 
-		      <div class="col-sm-6 col-md-3" style="height: 315px">
-    <div class="thumbnail">
-      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU3ZmNmZWJhNDEgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTdmY2ZlYmE0MSI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NTkzNzUiIHk9IjEwNS4xIj4yNDJ4MjAwPC90ZXh0PjwvZz48L2c+PC9zdmc+" alt="..." style="height: 200px; width: 100%; display: block;" class="video">
-      <div class="caption">
-        <h3></h3>
-        <p>Alora Jaymes works hard for her money</p>
-      </div>
-    </div>
   </div>
-</div>
+
+  <div class="row" id="conteudo">
+  
+  </div>
 </div>
 
 <div class="modal fade" id="myModal" role="dialog">
@@ -45,20 +49,19 @@ p {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Titulo</h4>
+          <h4 class="modal-title"></h4>
         </div>
-        <div class="modal-body" style="height: 300px">
-			<embed width="100%" height="100%" src="https://www.youtube.com/embed/DwghBQJU-bo">
+        <div class="modal-body" style="height: 500px">
+        <embed id="embed-video" width="100%" height="100%" src="">
         </div>
-      </div>
-      
+      </div>      
     </div>
   </div>
 
 <script type="text-html" id="template">
-	      <div class="col-sm-6 col-md-3" style="height: 315px">
+  <div class="col-sm-6 col-md-3 video" style="height: 315px" data-titulo="${video.title}" data-url="${video.embed_url}">
     <div class="thumbnail">
-      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU3ZmNmZWJhNDEgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTdmY2ZlYmE0MSI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NTkzNzUiIHk9IjEwNS4xIj4yNDJ4MjAwPC90ZXh0PjwvZz48L2c+PC9zdmc+" alt="..." style="height: 200px; width: 100%; display: block;" class="video">
+      <img src="${video.default_thumb}" style="cursor: pointer; height: 200px; width: 100%; display: block;" class="thumb-video">
       <div class="caption">
         <h3></h3>
         <p>${video.title}</p>
@@ -76,25 +79,41 @@ p {
 <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 
 <script type="text/javascript">
-	
-$.ajax(
+ 
+
+var pesquisarVideos = function () 
 {
-	url: 'https://crossorigin.me/http://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=hard',
-	method: 'GET',
-	success: function (retorno) 
-	{
-		$("#template").tmpl(retorno.videos).appendTo('#conteudo');
-	},
-	error: function() 
-	{
-		alert('DEU RUIM')
-	}
+  debugger;
+  var search = $("#itemSearch").val();
+
+  $.ajax(
+{
+  url: 'https://crossorigin.me/http://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=' + search,
+  method: 'GET',
+  success: function (retorno) 
+  {
+    $("#template").tmpl(retorno.videos).appendTo('#conteudo');
+  },
+  error: function() 
+  {
+    alert('DEU RUIM');
+  }
 });
 
+}
 
-$("#conteudo").on('click', '.video', function () 
+$("#btn-search").on('click', pesquisarVideos);
+
+$("#conteudo").on('click', '.thumb-video', function () 
 {
-	$("#myModal").modal();
+  var elemento = $(this);
+  var embed_url = elemento.closest('.video').data('url');
+  var titulo = elemento.closest('.video').data('titulo');
+
+  $(".modal-title").html(titulo);
+  $("#embed-video").attr('src', embed_url);
+
+  $("#myModal").modal();
 })
 
 </script>
