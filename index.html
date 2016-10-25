@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script src="libs/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+	
+$.ajax(
+{
+	url: 'https://crossorigin.me/http://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=hard&tags[]=Teen&thumbsize=medium',
+	method: 'GET',
+	success: function (retorno) 
+	{
+		debugger;
+		console.log('retorno');
+	},
+	error: function() 
+	{
+		alert('DEU RUIM')
+	}
+})
+
+</script>
+
+</body>
+</html>
