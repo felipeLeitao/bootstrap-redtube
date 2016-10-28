@@ -29,10 +29,10 @@ p {
   <p>Redtube (Zona Leste)</p>
   
     <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="btn-search">Vai!</button>
-      </span>
       <input id="itemSearch" type="text" class="form-control" placeholder="Mia Khalifa...">
+      <span class="input-group-btn">
+        <button id="btn-search" class="btn btn-default" type="button">Pesquisar</button>
+      </span>
     </div><!-- /input-group -->
   </div>
 
@@ -102,6 +102,7 @@ var pesquisarVideos = function ()
   },
   success: function (retorno) 
   {
+    $(".video").remove();
     $("#template").tmpl(retorno.videos).appendTo('#conteudo');
   },
   error: function() 
