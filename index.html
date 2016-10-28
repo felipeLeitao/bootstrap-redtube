@@ -34,6 +34,12 @@ p {
       </span>
       <input id="itemSearch" type="text" class="form-control" placeholder="Mia Khalifa...">
     </div><!-- /input-group -->
+  </div>
+
+  <div class="progress" id="div-loading" style="display: none;">
+  <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+    <span class="sr-only">45% Complete</span>
+  </div>
 
   </div>
 
@@ -52,7 +58,7 @@ p {
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body" style="height: 500px">
-        <embed id="embed-video" width="100%" height="100%" src="">
+        <iframe id="embed-video" width="100%" height="100%"> </iframe>
         </div>
       </div>      
     </div>
@@ -90,6 +96,10 @@ var pesquisarVideos = function ()
 {
   url: 'https://crossorigin.me/http://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=' + search,
   method: 'GET',
+  beforeSend: function ()
+  {
+    $("#div-loading").show();
+  },
   success: function (retorno) 
   {
     $("#template").tmpl(retorno.videos).appendTo('#conteudo');
@@ -97,6 +107,10 @@ var pesquisarVideos = function ()
   error: function() 
   {
     alert('DEU RUIM');
+  },
+  complete: function ()
+  {
+    $("#div-loading").hide();
   }
 });
 
@@ -111,7 +125,7 @@ $("#conteudo").on('click', '.thumb-video', function ()
   var titulo = elemento.closest('.video').data('titulo');
 
   $(".modal-title").html(titulo);
-  $("#embed-video").attr('src', embed_url);
+  $("#embed-video").attr('src', "https://crossorigin.me/" + embed_url);
 
   $("#myModal").modal();
 })
